@@ -1,20 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Api } from '../Api';
-import {addImage} from '../redux/actions';
+import {addImages} from '../redux/actions';
 import {getImagesState} from '../redux/selectors';
 
 class Slider extends React.Component {
-  constructor(props) {
-    super(props)
-  }
 
   loadImages = () => {
     Api.getImages().then(arr => {
-      arr.forEach(img => {
-        if (this.props.images.indexOf(img) === -1)
-          this.props.addImage(img)
-      })
+      this.props.addImages(arr)
     })
   }
 
@@ -26,12 +20,13 @@ class Slider extends React.Component {
     return (
       <div>
         {this.props.images.map((img, i) => ((
-          <img key={i} src={img}></img>
+          <img alt='img' key={i} src={img}></img>
         )))}
       </div>
     )
   }
 }
 
-export default connect(getImagesState, { addImage })(Slider)
+const mapStateToProps = store => ({images: getImagesState(store)})
 
+export default connect(mapStateToProps, { addImages })(Slider)
