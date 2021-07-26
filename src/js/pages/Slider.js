@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Api } from '../Api';
-import {addImages} from '../redux/actions';
-import {getImagesState} from '../redux/selectors';
+import { addImages } from '../redux/actions';
+import { getImagesState } from '../redux/selectors';
 
 class Slider extends React.Component {
 
@@ -27,6 +27,6 @@ class Slider extends React.Component {
   }
 }
 
-const mapStateToProps = store => ({images: getImagesState(store)})
+const mapStateToProps = store => ({ images: getImagesState(store) })
 
 export default connect(mapStateToProps, { addImages })(Slider)
