@@ -76,7 +76,7 @@ class Slider extends React.Component {
           </div>
           <button onClick={this.handleToRightClick} className="btn-switch"> Right </button>
         </div>
-        <button onClick={this.handleSwitchLoadingPlace} className="btn">  Switch to {this.state.isLocal ? 'remote' : 'local'}</button>
+        <button onClick={this.handleSwitchLoadingPlace} className="btn">  Switch to {this.state.isLocal ?  'local' : 'remote' }</button>
         <Link to="/main">
           <button className="btn"> Back to main</button>
         </Link>
