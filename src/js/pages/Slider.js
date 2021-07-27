@@ -10,34 +10,24 @@ class Slider extends React.Component {
     super(props)
     this.state = {
       imgIndex: 0,
-      images: [],
       isRemote: true,
       localImages: ['/0.jpg', '/1.jpg', '/2.jpg']
     }
   }
 
   loadImagesServer = () => {
-    Api.getImages().then(arr => {
-      this.props.addImages(arr)
-      this.setState({
-        images: this.props.images,
-        imgIndex: 0,
-        isRemote: true
-      })
-    })
+    Api.getImages().then(arr => this.props.addImages(arr))
   }
 
   handleSwitchLoadingPlace = (e) => {
-    const isRemote = !this.state.isRemote
-    const currentImages = isRemote ? this.props.images : this.state.localImages
-    this.setState({isRemote: !isRemote, images: currentImages})
+    this.setState({ isRemote: !this.state.isRemote })
   }
 
   handleToLeftClick = (e) => {
     let i = this.state.imgIndex
     i = i - 1
     if (i < 0) {
-      i = this.state.images.length - 1
+      i = 3 - 1
     }
     this.setState({ imgIndex: i })
   }
@@ -45,7 +35,7 @@ class Slider extends React.Component {
   handleToRightClick = (e) => {
     let i = this.state.imgIndex
     i = i + 1
-    if (i >= this.state.images.length) {
+    if (i >= 3) {
       i = 0
     }
     this.setState({ imgIndex: i })
@@ -56,16 +46,18 @@ class Slider extends React.Component {
   }
 
   render = () => {
+    const images = this.state.isRemote ? this.props.images : this.state.localImages
+
     return (
       <div className="slider_block">
         <div className="slider">
           <button onClick={this.handleToLeftClick} className="btn-switch"> Left </button>
           <div className="slider_img">
-            <img className="img" alt='img' src={this.state.images[this.state.imgIndex]}></img>
+            <img className="img" alt='img' src={images[this.state.imgIndex]}></img>
           </div>
           <button onClick={this.handleToRightClick} className="btn-switch"> Right </button>
         </div>
-        <button onClick={this.handleSwitchLoadingPlace} className="btn">  Switch to {this.state.isRemote ?  'local' : 'remote' }</button>
+        <button onClick={this.handleSwitchLoadingPlace} className="btn">  Switch to {this.state.isRemote ? 'local' : 'remote'}</button>
         <Link to="/main">
           <button className="btn"> Back to main</button>
         </Link>
