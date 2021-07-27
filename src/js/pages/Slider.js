@@ -11,22 +11,9 @@ class Slider extends React.Component {
     this.state = {
       imgIndex: 0,
       images: [],
-      isRemote: true
+      isRemote: true,
+      localImages: ['/0.jpg', '/1.jpg', '/2.jpg']
     }
-  }
-
-  importAll(r) {
-    console.log(r.keys())
-    return r.keys().map(item => r(item).default)
-  }
-
-  loadImagesLocal = () => {
-    const images = this.importAll(require.context('../../img', false, /\.(png|jpe?g|svg)$/))
-    this.setState({
-      images: images,
-      imgIndex: 0,
-      isRemote: false
-    })
   }
 
   loadImagesServer = () => {
@@ -41,8 +28,9 @@ class Slider extends React.Component {
   }
 
   handleSwitchLoadingPlace = (e) => {
-    this.setState({isRemote: !isRemote})
-    this.state.isRemote ? this.loadImagesServer() : this.loadImagesLocal()
+    const isRemote = !this.state.isRemote
+    const currentImages = isRemote ? this.props.images : this.state.localImages
+    this.setState({isRemote: !isRemote, images: currentImages})
   }
 
   handleToLeftClick = (e) => {
