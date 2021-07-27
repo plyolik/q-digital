@@ -11,7 +11,7 @@ class Slider extends React.Component {
     this.state = {
       imgIndex: 0,
       images: [],
-      isLocal: true
+      isRemote: true
     }
   }
 
@@ -25,7 +25,7 @@ class Slider extends React.Component {
     this.setState({
       images: images,
       imgIndex: 0,
-      isLocal: false
+      isRemote: false
     })
   }
 
@@ -35,13 +35,14 @@ class Slider extends React.Component {
       this.setState({
         images: this.props.images,
         imgIndex: 0,
-        isLocal: true
+        isRemote: true
       })
     })
   }
 
   handleSwitchLoadingPlace = (e) => {
-    this.state.isLocal ? this.loadImagesLocal() : this.loadImagesServer()
+    this.setState({isRemote: !isRemote})
+    this.state.isRemote ? this.loadImagesServer() : this.loadImagesLocal()
   }
 
   handleToLeftClick = (e) => {
@@ -76,7 +77,7 @@ class Slider extends React.Component {
           </div>
           <button onClick={this.handleToRightClick} className="btn-switch"> Right </button>
         </div>
-        <button onClick={this.handleSwitchLoadingPlace} className="btn">  Switch to {this.state.isLocal ?  'local' : 'remote' }</button>
+        <button onClick={this.handleSwitchLoadingPlace} className="btn">  Switch to {this.state.isRemote ?  'local' : 'remote' }</button>
         <Link to="/main">
           <button className="btn"> Back to main</button>
         </Link>
