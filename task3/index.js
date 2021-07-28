@@ -1,9 +1,14 @@
-/**
- * @format
- */
-
 import {AppRegistry} from 'react-native';
 import App from './App';
 import {name as appName} from './app.json';
+import React from 'react';
+import store from './src/js/redux/index'
+import { Provider } from 'react-redux';
 
-AppRegistry.registerComponent(appName, () => App);
+const application = () => ((
+  <Provider store={store}>
+    <App />
+  </Provider>
+))
+
+AppRegistry.registerComponent(appName, () => application)
