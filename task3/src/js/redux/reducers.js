@@ -1,5 +1,5 @@
 import { initialState } from "./initialState"
-import { ADD_IMAGES } from "./actionTypes"
+import { ADD_IMAGES, ADD_SOUNDS  } from "./actionTypes"
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
@@ -8,6 +8,13 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         images: content
+      }
+    }
+    case ADD_SOUNDS: {
+      const { content } = action.payload
+      return {
+        ...state,
+        sounds: content
       }
     }
     default: {

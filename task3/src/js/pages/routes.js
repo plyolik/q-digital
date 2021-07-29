@@ -4,7 +4,7 @@ import { Route } from "react-router-native";
 import Main from './main';
 import Player from './player';
 import Slider from './slider';
-import Tabs from './tabs';
+import Tabs from '../components/tabs';
 import styles from '../../scss/components/routes.scss'
 
 class Routes extends React.Component {
