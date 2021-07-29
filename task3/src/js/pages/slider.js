@@ -2,8 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Api } from '../Api';
 import { addImages } from '../redux/actions';
-import { Link } from "react-router-native";
-import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 import styles from '../../scss/components/slider.scss'
 
 class Slider extends React.Component {
@@ -73,22 +72,10 @@ class Slider extends React.Component {
         <TouchableOpacity onPress={this.handleSwitchLoadingPlace} className={styles.btn} >
           <Text>Switch to {this.state.isRemote ? 'local' : 'remote'}</Text>
         </TouchableOpacity>
-        {/* <Link component={TouchableOpacity} to="/" className={styles.btn}>
-          <Text>
-            Back to main
-          </Text>
-        </Link> */}
       </View>
     )
   }
 }
-
-const sty = StyleSheet.create({
-  img: {
-    width: '50%',
-    height: 100
-  }
-})
 
 const mapStateToProps = store => ({ images: store.images })
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View} from 'react-native';
+import { Text, View } from 'react-native';
 import styles from '../../scss/components/player.scss'
 
 export default class Player extends React.Component {
