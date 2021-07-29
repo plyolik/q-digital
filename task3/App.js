@@ -1,25 +1,14 @@
 import React from 'react';
 import Routes from './src/js/pages/routes.js'
 import { NativeRouter } from "react-router-native";
-
-
-
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { View } from 'react-native';
 
 const App = () => {
 
   return (
     <NativeRouter>
       <View>
-        <Routes/>
+        <Routes />
       </View>
     </NativeRouter>
   );

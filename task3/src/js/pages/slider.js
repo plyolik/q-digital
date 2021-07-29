@@ -73,11 +73,11 @@ class Slider extends React.Component {
         <TouchableOpacity onPress={this.handleSwitchLoadingPlace} className={styles.btn} >
           <Text>Switch to {this.state.isRemote ? 'local' : 'remote'}</Text>
         </TouchableOpacity>
-        <Link component={TouchableOpacity} to="/" className={styles.btn}>
+        {/* <Link component={TouchableOpacity} to="/" className={styles.btn}>
           <Text>
             Back to main
           </Text>
-        </Link>
+        </Link> */}
       </View>
     )
   }
