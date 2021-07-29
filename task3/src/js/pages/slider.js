@@ -47,11 +47,9 @@ class Slider extends React.Component {
 
   render = () => {
     const images = this.state.isRemote ? this.props.images : this.state.localImages
-
     const patchImage = images[this.state.imgIndex]
-
     const img = this.state.isRemote ? { uri: patchImage } : patchImage
-
+    
     return (
       <View className={styles.slider}>
         <View>

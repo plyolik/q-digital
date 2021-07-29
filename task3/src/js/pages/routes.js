@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Route} from "react-router-native";
+import { Route } from "react-router-native";
 import Main from './main';
 import Player from './player';
 import Slider from './slider';
